@@ -10,8 +10,22 @@ include ABSOLUTE_PATH . "/_includes/header.inc.php";
 <div id="content">
 
 <?php
+$myArray = array('Jennifer', 'Yellow', 'Fried Green Tomatoes', 'Good Omens', 'Ravelry');
+echo "<h1>$myArray[0]</h1>";
 
-$myArray = array('Jennifer', 'Yellow', 'Fried Green Tomatoes', 'Good Omen', 'Ravelry');
+function one($array) {
+  unset($array[0]);
+
+  foreach ($array as $item) {
+     echo "<ul><li>$item</li></ul>";
+  }
+
+}
+
+one($myArray);
+
+/*
+$myArray = array('Jennifer', 'Yellow', 'Fried Green Tomatoes', 'Good Omens', 'Ravelry');
 
 //$myNewArray = myArray.shift
 
@@ -23,7 +37,6 @@ foreach ($myArray as $item) {
    echo "<ul><li>$item</li></ul>";
 }
 
-/*
 $myNewArray = array('myName' => 'Jennifer', 'myColor' => 'Yellow', 'myMovie' => 'Fried Green Tomatoes', 'myBook' => 'Good Omen', 'mySite' => 'Ravelry');
 
 //$myNewArray = myArray.shift
