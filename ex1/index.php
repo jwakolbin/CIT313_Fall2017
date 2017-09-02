@@ -4,13 +4,13 @@ include "_includes/config.php";
 
 include ABSOLUTE_PATH . "/_includes/header.inc.php";
 
- 
+
 ?>
 <body>
 <div id="content">
 
 <?php
-$myArray = array('Jennifer', 'Yellow', 'Fried Green Tomatoes', 'Good Omens', 'Ravelry');
+$myArray = array('Jennifer', 'Yellow', 'Fried Green Tomatoes', 'Good Omens by Neil Gaiman and Terry Pratchett', 'Ravelry');
 echo "<h1>$myArray[0]</h1>";
 
 function one($array) {
