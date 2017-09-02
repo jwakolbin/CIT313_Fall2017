@@ -4,7 +4,7 @@ include "_includes/config.php";
 
 include ABSOLUTE_PATH . "/_includes/header.inc.php";
 
-
+ 
 ?>
 <body>
 <div id="content">
