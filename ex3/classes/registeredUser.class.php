@@ -25,9 +25,8 @@ class registeredUser extends user {
   public function __destruct() {
 
   }
-static public function getNames(){
-    return "Processing Complete";
-}
+
+
 
 }
 
