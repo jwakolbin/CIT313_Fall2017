@@ -1,7 +1,7 @@
 <?php
 class User extends Model{
 
-	function getPost($uID){
+	function getUser($uID){
 
 		$sql =  'SELECT uID, email, password, first_name, last_name FROM users WHERE uID = ?';
 
@@ -18,25 +18,25 @@ class User extends Model{
 
 		if($limit > 0){
 
-			$numusers = ' LIMIT '.$limit;
+			$numposts = ' LIMIT '.$limit;
 		}
 
-		$sql =  'SELECT uID, email, password, first_name, last_name FROM users'.$numusers;
+		$sql =  'SELECT uID, email, password, first_name, last_name FROM users';
 
 		// perform query
 		$results = $this->db->execute($sql);
 
 		while ($row=$results->fetchrow()) {
-			$user[] = $row;
+			$users[] = $row;
 		}
 
-		return $user;
+		return $users;
 
 	}
 
 	public function addPost($data){
 
-		$sql='INSERT INTO posts (first_name, last_name, email, password) VALUES (?,?)';
+		$sql='INSERT INTO posts (email, password, first_name, last_name) VALUES (?,?)';
 		$this->db->execute($sql,$data);
 		$message = 'User added.';
 		return $message;

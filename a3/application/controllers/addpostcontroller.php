@@ -1,7 +1,7 @@
 <?php
 
-$title = $_POST['post_title'];
-$content = $_POST['post_content'];
+//$title = $_POST['post_title'];
+//$content = $_POST['post_content'];
 
 
 

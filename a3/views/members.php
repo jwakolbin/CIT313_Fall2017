@@ -13,7 +13,7 @@
   </div>
 
 	<?php foreach($user as $p){?>
-    <h3><a href="<?php echo BASE_URL?>members/<?php echo $p['uID'];?>" Email="<?php echo $p['email'];?>"></a></h3>
+    <h3><a href="<?php echo BASE_URL?>members/<?php echo $p['uID'];?>" Email="<?php echo $p['email'];?>"><?php echo $p['email'];?></a></h3>
 		<p><?php echo $p['first_name'];?><?php echo $p['last_name'];?></p>
 	<p><?php echo $p['email'];?></p>
 <?php }?>

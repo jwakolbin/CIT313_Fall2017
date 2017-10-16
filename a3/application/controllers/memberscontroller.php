@@ -9,6 +9,7 @@ class MembersController extends Controller{
 		$this->userObject = new User();
 		$user = $this->userObject->getUser($uID);
 	  $this->set('user',$user);
+		$this->set('title', 'The Members View');
 
    	}
 
