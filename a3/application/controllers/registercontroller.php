@@ -19,24 +19,24 @@ class RegisterController extends Controller{
 			$data = array('fname'=>$_POST['post_fname'], 'lname'=>$_POST['post_lname'], 'email'=>$_POST['post_email'], 'password'=>$_POST['post_password'],);
 
 
-			$result = $this->userObject->addPost($data);
+			$result = $this->userObject->addUser($data);
 
 			$this->set('message', $result);
 
 
 	}
 
-	public function edit($pID){
+	public function edit($uID){
 
 			$this->userObject = new User();
 
-			$user = $this->userObject->getUser($pID);
+			$user = $this->userObject->getUser($uID);
 
-			$this->set('uID', $post['uID']);
-			$this->set('fname', $post['fname']);
-			$this->set('lname', $post['lname']);
-			$this->set('email', $post['email']);
-			$this->set('password', $post['password']);
+			$this->set('uID', $user['uID']);
+			$this->set('fname', $user['fname']);
+			$this->set('lname', $user['lname']);
+			$this->set('email', $user['email']);
+			$this->set('password', $user['password']);
 			$this->set('task', 'update');
 
 

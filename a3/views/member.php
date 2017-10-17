@@ -11,6 +11,7 @@ if( is_array($user) ) {
   </div>
 
 <?php echo $email;?>
+<?php echo $first_name;?>
 
 </div>
 <?php }?>

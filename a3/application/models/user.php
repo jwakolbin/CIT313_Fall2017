@@ -6,7 +6,7 @@ class User extends Model{
 		$sql =  'SELECT uID, email, password, first_name, last_name FROM users WHERE uID = ?';
 
 		// perform query
-		$results = $this->db->getrow($sql, array($uID));
+		$results = $this->db->getrow($sql, array($p=uID));
 
 		$user = $results;
 
@@ -14,14 +14,14 @@ class User extends Model{
 
 	}
 
-	public function getAllUser($limit = 0){
+	public function getAllUsers($limit = 0){
 
 		if($limit > 0){
 
-			$numposts = ' LIMIT '.$limit;
+			$numusers = ' LIMIT '.$limit;
 		}
 
-		$sql =  'SELECT uID, email, password, first_name, last_name FROM users';
+		$sql =  'SELECT uID, email, password, first_name, last_name FROM users'.$numusers;
 
 		// perform query
 		$results = $this->db->execute($sql);
@@ -34,16 +34,23 @@ class User extends Model{
 
 	}
 
-	public function addPost($data){
+	public function addUser($data){
 
-		$sql='INSERT INTO posts (email, password, first_name, last_name) VALUES (?,?)';
+		$sql='INSERT INTO users (uID, email, password, first_name, last_name) VALUES (?,?)';
 		$this->db->execute($sql,$data);
 		$message = 'User added.';
 		return $message;
 
 	}
 
+	/* public function updatePost($data) {
 
+		$sql='UPDATE posts (title,content,date) VALUES (?,?)';
+		$this->db->execute($sql,$data);
+		$message = 'Post updated.';
+		return $message;
+
+	} */
 
 
 }

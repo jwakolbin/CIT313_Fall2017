@@ -8,7 +8,7 @@ class BlogController extends Controller{
 
 		$this->postObject = new Post();
 		$post = $this->postObject->getPost($pID);
-	  	$this->set('post',$post);
+	  $this->set('post',$post);
 
    	}
 

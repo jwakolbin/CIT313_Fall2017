@@ -16,9 +16,10 @@ class MembersController extends Controller{
 	public function defaultTask(){
 
 		$this->userObject = new User();
-		$users = $this->userObject->getAllUsers();
+		$user = $this->userObject->getAllUser();
 		$this->set('title', 'The Members View');
-		$this->set('users',$users);
+		$this->set('user',$user);
+		//for some reason when I turned this into users it comes up with an error
 
 	}
 
