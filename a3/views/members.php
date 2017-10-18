@@ -10,9 +10,7 @@ if( is_array($user) ) {
 <h1><?php echo $title;?></h1>
   </div>
 
-	<?php echo $user['email'];?>"><?php echo $user['email'];?></a></h3>
-	<p><?php echo $user['first_name'].$user['last_name'];?></p>
-	<p><?php echo $user['email'];?></p>
+	<h3><?php echo $email;?></p>
 
 
 </div>
