@@ -42,7 +42,8 @@ class User extends Model{
 		$fname = $_POST['post_fname'];
 		$lname = $_POST['post_lname'];
 
-		$sql="INSERT INTO users (email, password, first_name, last_name) VALUES ('".$email."','".$password."','".$fname."','".$lname."')";
+		$sql="INSERT INTO users (email, password, first_name, last_name) VALUES (?,?)";
+		/* $sql="INSERT INTO users (email, password, first_name, last_name) VALUES ('".$email."','".$password."','".$fname."','".$lname."')"; */
 		$this->db->execute($sql,$data);
 		$message = 'User added.';
 		return $message;
