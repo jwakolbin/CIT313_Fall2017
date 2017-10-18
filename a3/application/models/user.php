@@ -1,12 +1,12 @@
 <?php
 class User extends Model{
 
-	function getUser($uID){
+	function getUser($email){
 
-		$sql =  'SELECT uID, email, password, first_name, last_name FROM users WHERE uID = ?';
+		$sql =  'SELECT uID, email, password, first_name, last_name FROM users WHERE email = ?';
 
 		// perform query
-		$results = $this->db->getrow($sql, array($p=uID));
+		$results = $this->db->getrow($sql, array($email));
 
 		$user = $results;
 
@@ -36,7 +36,13 @@ class User extends Model{
 
 	public function addUser($data){
 
-		$sql='INSERT INTO users (uID, email, password, first_name, last_name) VALUES (?,?)';
+		$uID = $_POST["post_uID"];
+		$email = $_POST["post_email"];
+		$password = $_POST['post_password'];
+		$fname = $_POST['post_fname'];
+		$lname = $_POST['post_lname'];
+
+		$sql="INSERT INTO users (email, password, first_name, last_name) VALUES ('".$email."','".$password."','".$fname."','".$lname."')";
 		$this->db->execute($sql,$data);
 		$message = 'User added.';
 		return $message;

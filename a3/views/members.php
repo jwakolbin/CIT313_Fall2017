@@ -10,8 +10,8 @@ if( is_array($user) ) {
 <h1><?php echo $title;?></h1>
   </div>
 
-	<h3><?php echo $email;?></p>
-
+		<p><?php echo $first_name." ".$last_name;?></p>
+		<p><?php echo $email;?></p>
 
 </div>
 <?php }?>
@@ -25,7 +25,7 @@ if( is_array($user) ) {
   </div>
 
 	<?php foreach($users as $p){?>
-		<h3><a href="<?php echo BASE_URL?>members/view/<?php echo $p['uID'];?>" Email="<?php echo $p['email'];?>"><?php echo $p['email'];?></a></h3>
+		<h3><a href="<?php echo BASE_URL?>members/view/<?php echo $p['email'];?>" Email="<?php echo $p['email'];?>"><?php echo $p['email'];?></a></h3>
 		<p><?php echo $p['first_name']." ".$p['last_name'];?></p>
 	<p><?php echo $p['email'];?></p>
 <?php }?>

@@ -4,12 +4,15 @@ class MembersController extends Controller{
 
 	public $userObject;
 
-   	public function view($uID){
+   	public function view($email){
 
 		$this->userObject = new User();
-		$user = $this->userObject->getUser($uID);
+		$user = $this->userObject->getUser($email);
 	  $this->set('user',$user);
 		$this->set('title', 'The Members View');
+		$this->set('email', $email);
+		$this->set('first_name', $first_name);
+		$this->set('last_name', $last_name);
 
    	}
 
