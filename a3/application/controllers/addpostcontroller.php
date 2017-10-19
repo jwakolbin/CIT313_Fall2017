@@ -23,7 +23,7 @@ class AddPostController extends Controller{
 
 			$this->postObject = new Post();
 
-			$data = array('title'=>$_POST['post_title'], 'content'=>$_POST['post_content'],'date'=>date("Y-m-d H:i:s"));
+			$data = array('title'=>$_POST['post_title'], 'content'=>$_POST['post_content'],'categoryID'=>$_POST['post_categoryID'],'date'=>date("Y-m-d H:i:s"));
 
 			//'date'=>$_POST[STR_TO_DATE('$date', '%m/%d/%Y');
 
@@ -44,6 +44,7 @@ class AddPostController extends Controller{
 			$this->set('pID', $post['pID']);
 			$this->set('title', $post['title']);
 			$this->set('content', $post['content']);
+			$this->set('categoryID', $post['categoryID']);
 			$this->set('task', 'update');
 
 
@@ -51,7 +52,7 @@ class AddPostController extends Controller{
 
 	public function updatePost($data) {
 
-		$sql='UPDATE posts (title,content,date) VALUES (?,?)';
+		$sql='UPDATE posts (title,content,categoryID,date) VALUES (?,?)';
 		$this->db->execute($sql,$data);
 		$message = 'Post updated.';
 		return $message;
