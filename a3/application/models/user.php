@@ -35,29 +35,20 @@ class User extends Model{
 	}
 
 	public function addUser($data){
-
-		$uID = $_POST["post_uID"];
-		$email = $_POST["post_email"];
-		$password = $_POST['post_password'];
-		$fname = $_POST['post_fname'];
-		$lname = $_POST['post_lname'];
-
-		$sql="INSERT INTO users (email, password, first_name, last_name) VALUES (?,?)";
-		/* $sql="INSERT INTO users (email, password, first_name, last_name) VALUES ('".$email."','".$password."','".$fname."','".$lname."')"; */
+		$sql = 'INSERT INTO users (first_name, last_name, email, password) VALUES (?,?,?,?)'; 
 		$this->db->execute($sql,$data);
 		$message = 'User added.';
 		return $message;
-
 	}
 
-	/* public function updatePost($data) {
+	public function updateUser($data) {
 
-		$sql='UPDATE posts (title,content,date) VALUES (?,?)';
+		$sql='UPDATE users (first_name, last_name, email, password) VALUES (?,?,?,?)';
 		$this->db->execute($sql,$data);
 		$message = 'Post updated.';
 		return $message;
 
-	} */
+	}
 
 
 }

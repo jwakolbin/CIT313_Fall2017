@@ -23,7 +23,7 @@ class AddPostController extends Controller{
 
 			$this->postObject = new Post();
 
-			$data = array('date'=>date("Y-m-d H:i:s"),  'title'=>$_POST['post_title'], 'content'=>$_POST['post_content']);
+			$data = array('title'=>$_POST['post_title'], 'content'=>$_POST['post_content'],'date'=>date("Y-m-d H:i:s"));
 
 			//'date'=>$_POST[STR_TO_DATE('$date', '%m/%d/%Y');
 
@@ -49,12 +49,12 @@ class AddPostController extends Controller{
 
 	}
 
-	/* function update_post($pID, $title, $contents, $date) {
-	     {
-	        // Bind named parameters
-	        $update = $this->db->prepare("UPDATE posts SET title = :title, contents = :contents WHERE id = :id");
-	        // Pass the values in an array to execute()
-	        $update->execute(array(':title' => $title, ':contents' => $contents, ':pID' => $px, ':date'=> $date));
-	    }
-} */
+	public function updatePost($data) {
+
+		$sql='UPDATE posts (title,content,date) VALUES (?,?)';
+		$this->db->execute($sql,$data);
+		$message = 'Post updated.';
+		return $message;
+
+	}
 }

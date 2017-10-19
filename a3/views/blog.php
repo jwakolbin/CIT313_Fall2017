@@ -24,6 +24,7 @@ if( is_array($post) ) {
   </div>
 
 	<?php foreach($posts as $p){?>
+		</br/>
 		<?php echo $p['date'];?><br />
     <h3><a href="<?php echo BASE_URL?>blog/view/<?php echo $p['pID'];?>" title="<?php echo $p['title'];?>"><?php echo $p['title'];?></a></h3>
 	<p><?php echo $p['content'];?></p>
