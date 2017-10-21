@@ -20,7 +20,7 @@ class RegisterController extends Controller{
 			$passhash = password_hash($password,PASSWORD_DEFAULT);
 
 
-			$data = array('fname'=>$_POST['post_fname'], 'lname'=>$_POST['post_lname'], 'email'=>$_POST['post_email'], 'password'=>$passhash,);
+			$data = array('fname'=>$_POST['post_fname'], 'lname'=>$_POST['post_lname'], 'email'=>$_POST['post_email'], 'password'=>$passhash);
 
 
 			$result = $this->userObject->addUser($data);

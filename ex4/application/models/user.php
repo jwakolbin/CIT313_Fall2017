@@ -73,9 +73,7 @@ public function getUser($email){
 		while ($row=$results->fetchrow()) {
 			$users[] = $row;
 		}
-
 		return $users;
-
 	}
 
 	public function addUser($data){
@@ -91,29 +89,26 @@ public function getUser($email){
 		$this->db->execute($sql,$data);
 		$message = 'Post updated.';
 		return $message;
-
 	}
 
 	public function checkUser($email, $password) {
 
 		//echo "Testing my variables, email = $email and password = $password";
 
-		//var_dump($password_db);
-		//var_dump($password);
 
 		$sql = 'SELECT email, password FROM users where email = ?';
 		$results = $this->db->getrow($sql, array($email));
 
 		$user = $results;
-
 		$password_db = $user[1];
 
-		if(password_verify($_POST['password'],$password_db)) {
+		if(password_verify($password,$password_db)) {
 			return true;
 		}
 		else {
 			return false;
 		}
+
 
 	}
 	public function getUserFromEmail($email){
