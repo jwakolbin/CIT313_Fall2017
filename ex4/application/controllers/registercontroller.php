@@ -8,20 +8,16 @@ class RegisterController extends Controller{
 
 		$this->userObject = new User();
 		$this->set('task', 'add');
-
-
 	}
 
 	public function add(){
 
 			$this->userObject = new User();
 
-			$password = $_POST['password'];
+			$password = $_POST['post_password'];
 			$passhash = password_hash($password,PASSWORD_DEFAULT);
 
-
 			$data = array('fname'=>$_POST['post_fname'], 'lname'=>$_POST['post_lname'], 'email'=>$_POST['post_email'], 'password'=>$passhash);
-
 
 			$result = $this->userObject->addUser($data);
 			$this->set('message', $result);

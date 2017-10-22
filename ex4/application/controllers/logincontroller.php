@@ -11,6 +11,10 @@ class LoginController extends Controller{
 
 		// var_dump($_POST);
 
+		$password = $_POST['password'];
+		//$password_db = password_hash($password,PASSWORD_DEFAULT);
+
+
 		if($this->userObject->checkUser($_POST['email'],$_POST['password'])) {
 
 			$userInfo = $this->userObject->getUserFromEmail($_POST['email']);

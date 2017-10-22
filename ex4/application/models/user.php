@@ -99,8 +99,10 @@ public function getUser($email){
 		$sql = 'SELECT email, password FROM users where email = ?';
 		$results = $this->db->getrow($sql, array($email));
 
+		var_dump($results);
+
 		$user = $results;
-		$password_db = $user[1];
+		$password_db = password_hash($password,PASSWORD_DEFAULT);
 
 		if(password_verify($password,$password_db)) {
 			return true;
@@ -108,7 +110,6 @@ public function getUser($email){
 		else {
 			return false;
 		}
-
 
 	}
 	public function getUserFromEmail($email){
