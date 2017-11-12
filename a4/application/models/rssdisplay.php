@@ -17,4 +17,12 @@ protected $num_items;
       return $items;
     }
 
+
+    public function getChannelInfo() {
+      $channel=$xmlDoc->getElementsByTagName('channel')->item(0);
+      $channel_title = $channel->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
+      $channel_link = $channel->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
+      $channel_desc = $channel->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
+    }
+
 }
