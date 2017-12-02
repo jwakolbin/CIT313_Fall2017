@@ -34,12 +34,10 @@ if( is_array($post) ) {
       if($u->isAdmin()) {
       ?>
       <div class="span8">
-        <form action="<?php echo BASE_URL?>manageposts/edit<?php echo $task?>" method="post" onsubmit="editor.post()"
-          <button id="submit" type="submit" class="btn btn-primary" >edit</button>
-        </form>
-        <form action="<?php echo BASE_URL?>manageposts/delete<?php echo $task?>" method="post" onsubmit="editor.post()"
-          <button id="submit" type="submit" class="btn btn-primary" >delete</button>
-        </form>
+
+      <a href="<?php echo BASE_URL;?>manageposts/edit/<?php echo $pID?>" class="btn btn-primary">Edit</a>
+      <a href="<?php echo BASE_URL;?>manageposts/delete/<?php echo $pID?>" class="btn btn-primary">Delete</a>
+
       <?php
       }
       else {
@@ -52,23 +50,33 @@ if( is_array($post) ) {
 <h3>Comments</h3>
 
 <figure>
+  <?php
+  if( is_array($comment) ) {
+      extract($comment);
+
+  }?>
+
     <p><?php echo $commentText;?></p>
 
     <?php
     if($u->isAdmin()) {
     ?>
     <div class="span8">
-      <form action="<?php echo BASE_URL?>manageposts/delete<?php echo $task?>" method="post" onsubmit="editor.post()"
-        <button id="submit" type="submit" class="btn btn-primary" >delete</button>
-      </form>
+      <a href="<?php echo BASE_URL;?>blog/delete/<?php echo $postID?>" class="btn btn-primary">Delete</a>
     <?php
     }
     else {
 
     }
     ?>
-</figure>
 
+    <br  />
+    <br  />
+
+</figure>
+<?php
+if($u->isRegistered()) {
+?>
         <div class="row">
             <div class="span8">
               <form action="<?php echo BASE_URL?>blog/<?php echo $task?>" method="post" onsubmit="editor.post()">
@@ -88,6 +96,12 @@ if( is_array($post) ) {
 
             </div>
           </div>
+          <?php
+          }
+          else {
+
+          }
+          ?>
 
         </div>
 

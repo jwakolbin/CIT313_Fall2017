@@ -1,13 +1,17 @@
 <?php
 class CategoriesController extends Controller{
-	
+
 	protected $categoryObject;
+
+	public function index(){
+
+	}
 
 	public function getCategories(){
 		$this->categoryObject = new Categories;
 		$outcome = $this->categoryObject->getCategories();
 		}
-		
+
 	public function edit($cID){
 		$this->categoryObject = new Categories;
 		$outcome = $this->categoryObject->getCategory($cID);
@@ -42,7 +46,7 @@ class CategoriesController extends Controller{
 		else{
 			$this->set('message','Category add failed.');
 		}
-		
+
 		$outcome = $this->categoryObject->getCategories();
 		$this->set('categories',$outcome);
 	}

@@ -80,6 +80,11 @@ class Post extends Model{
         return $message;
     }
 
-    
+    public function deletePost($data) {
 
+        $sql = 'DELETE posts WHERE pID = ?';
+        $this->db->execute($sql, $data);
+        $message = "Post Deleted.";
+        return $message;
+    }
 }

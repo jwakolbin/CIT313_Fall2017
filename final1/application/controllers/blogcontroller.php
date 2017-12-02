@@ -17,9 +17,9 @@ class BlogController extends Controller{
 		$this->set('posts',$posts);
 	}
 
-	public function comment($commentID){
+	public function comment(){
 			$this->postObject = new Comments();
-	$comment = $this->postObject->getComments($pID);
+			$comment = $this->postObject->getComments();
 		$this->set('comment',$comment);
 	}
 
