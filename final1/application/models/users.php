@@ -47,18 +47,14 @@ public function isAdmin() {
 	}
 }
 
-public function getUser($email){
+public function getUser($uID){
+	$sql = 'SELECT uID, first_name, last_name, email, password FROM users WHERE uID = ?';
 
-		$sql =  'SELECT uID, email, password, first_name, last_name FROM users WHERE email = ?';
-
-		// perform query
-		$results = $this->db->getrow($sql, array($email));
-
-		$user = $results;
-
-		return $user;
-
-	}
+	// perform query
+	$results = $this->db->getrow($sql, array($uID));
+	$user = $results;
+	return $user;
+}
 
 	public function getAllUsers($limit = 0){
 

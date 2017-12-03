@@ -1,43 +1,71 @@
 <?php
 class Comments extends Model{
 
-	function getComments($commentID){
-			$sql = 'SELECT commentID, uID, commentText, date, postID FROM comments WHERE $pID = ?';
-			$results = $this->db->getrow($sql, array($commentID));
+    function getComment($commentID){
+        $sql = 'SELECT commentID, uID, commentText, date, postID FROM comments WHERE commentID = ?';
+        $results = $this->db->getrow($sql, array($commentID));
 
-			$comment = $results;
+        $comment = $results;
 
-			return $comment;
-	}
+        return $comment;
 
+    }
 
-	public function getAllComments($limit = 0){
+    public function getUserPosts($uID){
 
-			if($limit > 0){
+        $sql = 'select * from comments where uID = ?';
 
-					$numcomments = ' LIMIT '.$limit;
-			}
+        $results = $this->db->execute($sql, $uID);
 
-			$sql =  'SELECT commentID, uID, commentText, date, postID FROM comments'.$numcomments;
+        while ($row=$results->fetchrow()) {
+            $comments[] = $row;
+        }
 
-			// perform query
-			$results = $this->db->execute($sql);
+        return $comments;
+    }
 
-			while ($row=$results->fetchrow()) {
-					$comments[] = $row;
-			}
+    public function getAllComments($limit = 0){
 
-			return $comments;
-	}
+        if($limit > 0){
 
+            $numcomments = ' LIMIT '.$limit;
+        }
 
-	public function addComment($data){
+        $sql =  'SELECT commentID, uID, commentText, date, postID FROM comments'.$numcomments;
 
-			$sql='INSERT INTO comments (date, commentText, postID, uID) VALUES (?,?,?,?)';
-			$this->db->execute($sql,$data);
-			$message = 'Comment added.';
-			return $message;
+        // perform query
+        $results = $this->db->execute($sql);
 
-	}
+        while ($row=$results->fetchrow()) {
+            $comments[] = $row;
+        }
 
+        return $comments;
+
+    }
+
+    public function addComment($data){
+
+        $sql='INSERT INTO comments (uID,commentText,date,postID) VALUES (1,?,?,?)';
+        $this->db->execute($sql,$data);
+        $message = 'Comments added.';
+        return $message;
+
+    }
+
+    public function updateComment($data) {
+
+        $sql = 'UPDATE comments SET uID = ?, commentText = ?, date = ?, postID = ? where commentID = ?';
+        $this->db->execute($sql, $data);
+        $message = "Comment updated.";
+        return $message;
+    }
+
+    public function deleteComment($data) {
+
+        $sql = 'DELETE comments WHERE commentID = ?';
+        $this->db->execute($sql, $data);
+        $message = "Post Deleted.";
+        return $message;
+    }
 }
