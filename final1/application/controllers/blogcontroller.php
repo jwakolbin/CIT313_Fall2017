@@ -14,6 +14,10 @@ class BlogController extends Controller{
 		$this->commentObject = new Comments();
 		$comments = $this->commentObject->getAllComments();
 		$this->set('comments',$comments);
+
+		$this->set('task', 'save');
+
+		$this->set('message', $result);
    	}
 
 		public function index(){
@@ -31,44 +35,43 @@ class BlogController extends Controller{
 	$this->set('task', 'save');
 	}
 
-
 	public function save(){
 
 	$this->commentObject = new Comments();
-	$data = array('commentText'=>$_POST['commentText'], 'uID'=>$_POST['uID'],'date'=>$_POST['date'],'postID'=>$_POST['postID']);
+	$data = array('commentText'=>$_POST['commentText'], 'uID'=>$_POST['uID'],'date'=>date("Y-m-d H:i:s"),'postID'=>$_POST['postID']);
 
-		//'date'=>$_POST[STR_TO_DATE('$date', '%m/%d/%Y');
+	//'date'=>$_POST[STR_TO_DATE('$date', '%m/%d/%Y');
 
-		$result = $this->commentObject->addComment($data);
+	$result = $this->commentObject->addComment($data);
 
-		$this->set('message', $result);
-	}
+	$this->set('message', $result);
+			 }
 
-		public function delete($commentID){
-			$this->commentObject = new Comments();
-			$post = $this->commentObject->getComment($commentID);
+	public function delete($commentID){
+	$this->commentObject = new Comments();
+	$post = $this->commentObject->getComment($commentID);
 
-			$this->set('commentID', $post['commentID']);
-			$this->set('uID', $post['uID']);
-			$this->set('commentText', $post['commentText']);
-			$this->set('date', $post['date']);
-			$this->set('postID', $post['postID']);
-			$this->set('task', 'update');
-			}
+	$this->set('commentID', $post['commentID']);
+	$this->set('commentText', $post['commentText']);
+	$this->set('uID', $post['uID']);
+	$this->set('date', date("Y-m-d H:i:s"));
+	$this->set('postID', $post['postID']);
+	$this->set('task', 'update');
+			 }
 
-			public function update(){
-				$data = array('uID'=>$_POST['uID'],'commentText'=>$_POST['commentText'],'date'=>$_POST['date'],'postID'=>$_POST['postID'],'commentId'=>$_POST['commentID']);
+	public function update(){
+	$data = array('commentText'=>$_POST['commentText'], 'uID'=>$_POST['uID'],'postID'=>$_POST['postID'],'date'=>date("Y-m-d H:i:s"), 'commentId'=>$_POST['commentID']);
 
-				$this->postObject = new Comments();
+	$this->commentObject = new Comments();
 
-				$result = $this->commentObject->updateComment($data);
-				$outcome = $this->commentObject->getAllComments();
-				$this->set('comments',$outcome);
-				$this->set('message', $result);
-				$this->set('task', 'update');
-			}
+	$result = $this->commentObject->updateComment($data);
+	$outcome = $this->commentObject->getAllComments();
+	$this->set('comments',$outcome);
+	$this->set('message', $result);
+	$this->set('task', 'update');
 
-
+	$this->set('message', $result);
+			 }
 }
 
 ?>

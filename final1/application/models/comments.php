@@ -44,28 +44,29 @@ class Comments extends Model{
 
     }
 
-    public function addComment($data){
 
-        $sql='INSERT INTO comments (uID,commentText,date,postID) VALUES (1,?,?,?)';
-        $this->db->execute($sql,$data);
-        $message = 'Comments added.';
-        return $message;
+      public function addComment($data){
 
-    }
+      $sql='INSERT INTO comments (uID,commentText,date,postID) VALUES (1,?,?)';
+      $this->db->execute($sql,$data);
+      $message = 'Comments added.';
+      return $message;
+      }
 
-    public function updateComment($data) {
+     public function updateComment($data) {
+      $sql = 'UPDATE comments SET uID = ?, commentText = ?, date = ?, postID = ? where commentID = ?';
+      $this->db->execute($sql, $data);
+      $message = "Comment updated.";
+      return $message;
+      }
 
-        $sql = 'UPDATE comments SET uID = ?, commentText = ?, date = ?, postID = ? where commentID = ?';
-        $this->db->execute($sql, $data);
-        $message = "Comment updated.";
-        return $message;
-    }
+     public function deleteComment($data) {
 
-    public function deleteComment($data) {
+     $sql = 'DELETE comments WHERE commentID = ?';
+     $this->db->execute($sql, $data);
+     $message = "Post Deleted.";
+     return $message;
+          }
 
-        $sql = 'DELETE comments WHERE commentID = ?';
-        $this->db->execute($sql, $data);
-        $message = "Post Deleted.";
-        return $message;
-    }
+
 }

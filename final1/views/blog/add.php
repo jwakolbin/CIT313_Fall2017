@@ -50,10 +50,8 @@
         <form action="<?php echo BASE_URL?>blog/<?php echo $task?>/<?php echo $pID?>" method="post" onsubmit="editor.post()">
           <label>Comment Text</label>
           <textarea name="commentText" style="width:556px;height: 200px"><?php echo $commentText; ?></textarea>
-					<label for="date">Date</label>
-					<?php // set timezone
-date_default_timezone_set('America/Indiana/Indianapolis');?>
-					<input name="date" id="date" size="16" type="date" value="<?php echo $date = date('Y-m-d H:i:s'); ?>">
+					<br  />
+					<br  />
           <input type="hidden" name="postID" value="<?php echo $postID; ?>"/>
 
           <input type="hidden" name="uID" value="<?php echo $uID; ?>"/>
