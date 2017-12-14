@@ -12,7 +12,7 @@ class CategoriesController extends Controller{
 		$outcome = $this->categoryObject->getCategories();
 		}
 
-	public function edit($cID){
+	public function edit($categoryID){
 		$this->categoryObject = new Categories;
 		$outcome = $this->categoryObject->getCategory($cID);
 
