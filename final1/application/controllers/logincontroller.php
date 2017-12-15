@@ -6,7 +6,7 @@ class LoginController extends Controller{
 
   public function index() {
 
-    
+
   }
 
    public function do_login() {
@@ -52,4 +52,33 @@ class LoginController extends Controller{
 
     }
 
-}
+    public function preventLogIn($uID){
+        $this->userObject = new Users();
+    $this->userObject->isActive($userInfo['uID']);
+
+      if($this->userObject->isActive($userInfo['uID'])) {
+
+          $userInfo = $this->userObject->getUserID();
+
+          $_SESSION['uID'] = $userInfo['uID'];
+
+         if(strlen($_SESSION['redirect']) > 0 ) {
+             $view = $_SESSION['redirect'];
+             unset($_SESSION['redirect']);
+             header('Location: '.BASE_URL.$view);
+         }
+          else {
+              header('Location: '.BASE_URL);
+          }
+
+
+
+
+      }
+      else {
+          $this->set('error','Waiting Approval');
+      }
+
+  }
+
+    }

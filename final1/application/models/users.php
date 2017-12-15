@@ -18,11 +18,16 @@ class Users extends Model{
 				$this->last_name=$userInfo['last_name'];
 				$this->email=$userInfo['email'];
 				$this->user_type=$userInfo['user_type'];
+				$this->user_type=$userInfo['active'];
 			}
 	}
 
 public function getUserName(){
 	return $this->first_name. ' ' .$this->last_name;
+}
+
+public function getUserID(){
+	return $this->uID;
 }
 
 public function getEmail() {
@@ -40,6 +45,16 @@ public function isRegistered() {
 
 public function isAdmin() {
 	if($this->user_type == '1') {
+		return true;
+}
+	else {
+		return false;
+	}
+}
+
+
+public function isActive($uID) {
+	if($this->active == '1') {
 		return true;
 }
 	else {
@@ -80,12 +95,22 @@ public function getUser($uID){
 	}
 
 	public function updateUser($data) {
-
+		/*$sql = 'UPDATE users WHERE uID = ?'; */
+		/*$sql='UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ? WHERE uID = ?';*/
 		$sql='UPDATE users (first_name, last_name, email, password) VALUES (?,?,?,?)';
 		$this->db->execute($sql,$data);
-		$message = 'Post updated.';
+		$message = 'User updated.';
 		return $message;
 	}
+
+	public function deleteUser($data) {
+
+			$sql = 'DELETE users WHERE uID = ?';
+			$this->db->execute($sql, $data);
+			$message = "User Deleted.";
+			return $message;
+	}
+
 
 	public function checkUser($email, $password) {
 

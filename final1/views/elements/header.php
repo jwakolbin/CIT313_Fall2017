@@ -69,12 +69,20 @@
                               <?php echo $u->getUserName();?><b class="caret"></b>
                           </a>
                             <ul class="dropdown-menu" role="menu">
-
+                              <li>
+                                  <a href="<?php echo BASE_URL?>members/users/<?php echo $u->getUserID()?>">My Profile</a>
+                              </li>
                                 <?php
                                 if($u->isAdmin()) {
                                     ?>
                                     <li>
                                         <a href="<?php echo BASE_URL?>manageposts/">Add Blog Post</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo BASE_URL?>manageusers/">Manage Users</a>
+                                    </li>
+                                    <li>
+                                      <a href="<?php echo BASE_URL?>edituser/edit/<?php echo $u->getUserID()?>">Modify Profile</a>
                                     </li>
                                 <?php
                                 }

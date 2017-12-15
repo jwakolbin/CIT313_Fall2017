@@ -2,11 +2,12 @@
 
 class RegisterController extends Controller{
 
-	protected $userObject;
+	public $userObject;
 
 	public function index(){
-		$userObject = new Users();
-		$this->set('task','add');
+
+		$this->userObject = new Users();
+		$this->set('task', 'add');
 	}
 
 	public function add(){
@@ -40,6 +41,5 @@ class RegisterController extends Controller{
 
 	}
 
-}
 
-?>
+}

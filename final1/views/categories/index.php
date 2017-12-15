@@ -4,7 +4,7 @@
 	<div class="page-header">
 		<h1>Categories</h1>
   	</div>
-    
+
   		<?php if($message){?>
     <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert">×</button>

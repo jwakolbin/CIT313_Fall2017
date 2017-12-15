@@ -5,7 +5,7 @@
 <div class="container">
 	<div class="page-header">
 
-   <h1> Register </h1>
+   <h1> the Add User View </h1>
   </div>
   <?php if($message){?>
     <div class="alert alert-success">
@@ -37,18 +37,13 @@
 					<br clear="all" />
 					<div id="emailError" class="error"></div>
 					<br />
-					<div>
 					<label>Password</label>
           <input type="text" class="span6" id="post_password" name="post_password" value="<?php echo $password?>">
-					<br />
-					<label>Confirm Password</label>
-          <input type="text" class="span6" id="post_password2" name="post_password2" value="<?php echo $password2?>">
 					</div>
 					<br clear="all" />
 					<div id="passwordError" class="error"></div>
 					<br />
 					<br/>
-					<input type="hidden" name="active" value="<?php echo $active?>"/>
           <input type="hidden" name="uID" value="<?php echo $uID?>"/>
 					<div>
           <button id="submit" type="submit" class="btn btn-primary" >Submit</button>
@@ -84,15 +79,11 @@
 						 $("#emailError").text("Please provide an email.");
 						$("#emailError").show();
 					}
-
-					var password = $("#post_password").val();
-	 				var confirmPassword = $("#post_password2").val();
-	 				if (password != confirmPassword) {
-
-		 			formSubmissionOK = false;
-					$("#passwordError").text("Please match passwords.");
-		 			$("#passwordError").show();
-	 				}
+					if ( ! $("#post_password").val() ) {
+						formSubmissionOK = false;
+						 $("#passwordError").text("Please provide an password.");
+						$("#passwordError").show();
+					}
 
 				 if (formSubmissionOK == false) {
 					event.preventDefault();

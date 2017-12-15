@@ -10,7 +10,7 @@
         <?php foreach($posts as $p){?>
             <h3><a href="<?php echo BASE_URL?>blog/post/<?php echo $p['pID'];?>" title="<?php echo $p['title'];?>"><?php echo $p['title'];?></a></h3>
             <!--<p><?php echo $p['content'];?></p> -->
-            <sub><?php echo 'Posted on ' . $p[date] . ' by <a href="'.BASE_URL.'members/view/'. $p[uid]. '">' . $p[first_name] . ' ' . $p[last_name] . '</a> in <a href="'.BASE_URL.'category/view/'. $p[categoryid].'">' . $p[name] .'</a>' ?></sub>
+            <sub><?php echo 'Posted on ' . $p[date] . 'by '. $p[first_name] . ' ' . $p[last_name] . ' in <a href="'.BASE_URL.'blog/category/'. $p[categoryid].'">' . $p[name] .'</a>' ?></sub>
             <div style="margin-top:15px;"><a href="<?php echo BASE_URL?>ajax/get_post_content/?pID=<?php echo $p['pID'];?>" class="btn post-loader">View entire post</a></div>
         <?php }?>
     </div>

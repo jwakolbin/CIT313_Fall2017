@@ -79,6 +79,10 @@ class ManageUsersController extends Controller{
 		$this->set('task', 'update');
 	}
 
+	public function checkUser($uID){
+		$this->userObject = new Users();
+		$this->userObject->isActive($userInfo['uID']) ;
+	}
 	/*
 	public function edit($uID){
 
@@ -114,3 +118,4 @@ class ManageUsersController extends Controller{
 	} */
 
 }
+?>
